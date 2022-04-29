@@ -121,16 +121,16 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
             for i, column in enumerate(row, 0):
                 normal_widget_item = True
                 item = QtWidgets.QTableWidgetItem(str(column))
-                if i == 12:
-                    item = QtWidgets.QComboBox()
-                    item.addItems(self.all_messager_types)
-                    item.setCurrentIndex(self.all_messager_types.index(column))
-                    normal_widget_item = False
-
-                if i == 15:
-                    flags = QtCore.Qt.ItemFlags()
-                    flags != QtCore.Qt.ItemIsEnabled
-                    item.setFlags(flags)
+                # if i == 12:
+                #     item = QtWidgets.QComboBox()
+                #     item.addItems(self.all_messager_types)
+                #     item.setCurrentIndex(self.all_messager_types.index(column))
+                #     normal_widget_item = False
+                #
+                # if i == 15:
+                #     flags = QtCore.Qt.ItemFlags()
+                #     flags != QtCore.Qt.ItemIsEnabled
+                #     item.setFlags(flags)
                 
                 if normal_widget_item:
                     self.table.setItem(row_pos, i, item)
@@ -273,17 +273,17 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
                 for i, column in enumerate(datas.values(), 0):
                     normal_widget_item = True
                     item = QtWidgets.QTableWidgetItem(str(column))
-                    if i == 12:
-                        item = QtWidgets.QComboBox()
-                        item.addItems(self.all_messager_types)
-                        item.setCurrentIndex(self.all_messager_types.index(column))
-                        normal_widget_item = False
-                    
-                    if i == 15:
-                        flags = QtCore.Qt.ItemFlags()
-                        flags != QtCore.Qt.ItemIsEnabled
-                        item.setFlags(flags)
-                    
+                    # if i == 12:
+                    #     item = QtWidgets.QComboBox()
+                    #     item.addItems(self.all_messager_types)
+                    #     item.setCurrentIndex(self.all_messager_types.index(column))
+                    #     normal_widget_item = False
+                    #
+                    # if i == 15:
+                    #     flags = QtCore.Qt.ItemFlags()
+                    #     flags != QtCore.Qt.ItemIsEnabled
+                    #     item.setFlags(flags)
+                    #
                     if normal_widget_item:
                         self.table.setItem(row_pos, i, item)
                     else:
