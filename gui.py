@@ -28,27 +28,13 @@ class Ui_MainWindow(object):
         self.organization.setObjectName("organization")
         self.gridLayout.addWidget(self.organization, 1, 1, 1, 1, QtCore.Qt.AlignRight)
 
-        # self.division = QtWidgets.QLabel(self.centralwidget)
-        # self.division.setObjectName("Подразделение")
-        # self.gridLayout.addWidget(self.division, 1, 1, 1, 1)
-
-        # self.subdivision = QtWidgets.QLabel(self.centralwidget)
-        # self.subdivision.setObjectName("подразделение")
-        # self.gridLayout.addWidget(self.subdivision, 0, 1, 1, 1, QtCore.Qt.AlignLeft)
-        #
-        # self.subdivision_level1 = QtWidgets.QLineEdit(self.centralwidget)
-        # self.subdivision_level1.setObjectName("подразделение ур.1")
-        # self.gridLayout.addWidget(self.subdivision_level1, 0, 2, 1, 1, QtCore.Qt.AlignRight)
-        #
-        # self.subdivision_level2 = QtWidgets.QLabel(self.centralwidget)
-        # self.subdivision_level2.setObjectName("подразделение ур.2")
-        # self.gridLayout.addWidget(self.subdivision_level2, 3, 1, 1, 1)
 
         self.table = QtWidgets.QTableWidget(self.centralwidget)
         self.table.setShowGrid(True)
         self.table.setObjectName("table")
         self.table.setColumnCount(13)
         self.table.setRowCount(2)
+
 
         item = QtWidgets.QTableWidgetItem()
         self.table.setHorizontalHeaderItem(0, item)
@@ -82,13 +68,25 @@ class Ui_MainWindow(object):
         # определяем положение таблицы в сетке
         self.gridLayout.addWidget(self.table, 0, 3, 10, 1)  # строка=0, колонка=3, отступ строка=10, отступ колонка=1
 
-        self.organization = QtWidgets.QLabel(self.centralwidget)
-        self.organization.setObjectName("organization")
-        self.gridLayout.addWidget(self.organization, 1, 2, 1, 1, QtCore.Qt.AlignRight)
+        # подпись ячейки
+        self.label_1 = QtWidgets.QLabel(self.centralwidget)
+        self.label_1.setObjectName("label_1")
+        self.gridLayout.addWidget(self.label_1, 0, 1, 1, 1)
 
-        self.division = QtWidgets.QLabel(self.centralwidget)
+        # ячейка ввода
+        self.organization = QtWidgets.QLineEdit(self.centralwidget)
+        self.organization.setObjectName("organization")
+        self.gridLayout.addWidget(self.organization, 0, 2, 1, 1, QtCore.Qt.AlignLeft)
+
+        # подпись ячейки
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 1, 1, 1, 1)
+
+        # ячейка ввода
+        self.division = QtWidgets.QLineEdit(self.centralwidget)
         self.division.setObjectName("division")
-        self.gridLayout.addWidget(self.division, 1, 1, 1, 1, QtCore.Qt.AlignRight)
+        self.gridLayout.addWidget(self.division, 1, 2, 1, 1, QtCore.Qt.AlignLeft)
 
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -161,7 +159,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Примечание"))
 
 
-        self.organization.setText(_translate("MainWindow", "Организация"))
-        self.division.setText(_translate("MainWindow", "Подразделение"))
+        self.label_1.setText(_translate("MainWindow", "Организация"))
+        self.label_2.setText(_translate("MainWindow", "Подразделение"))
 
 
