@@ -186,10 +186,20 @@ class Ui_MainWindow(object):
         self.mark.setObjectName("mark")
         self.gridLayout.addWidget(self.mark, 12, 2, 1, 1, QtCore.Qt.AlignLeft)
 
-        #
+        # кнопка добавить
         self.add = QtWidgets.QPushButton(self.centralwidget)
         self.add.setObjectName("add")
         self.gridLayout.addWidget(self.add, 14, 0, 1, 3)
+
+        # кнопка удалить
+        self.remove = QtWidgets.QPushButton(self.centralwidget)
+        self.remove.setObjectName("remove")
+        self.gridLayout.addWidget(self.remove, 15, 0, 1, 3)
+
+        # кнопка поиск
+        self.search = QtWidgets.QPushButton(self.centralwidget)
+        self.search.setObjectName("search")
+        self.gridLayout.addWidget(self.search, 16, 0, 1, 3)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.retranslateUi(MainWindow)  # подключаем подписи элементов таблицы
@@ -231,6 +241,8 @@ class Ui_MainWindow(object):
 
         # Кнопки
         self.add.clicked.connect(self.add_button)
+        self.search.clicked.connect(self.search_button)
+        self.remove.clicked.connect(self.delete_button)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -282,6 +294,9 @@ class Ui_MainWindow(object):
 
         # подпись кнопки
         self.add.setText(_translate("MainWindow", "Добавить"))
+        self.search.setText(_translate("MainWindow", "Поиск"))
+        self.remove.setText(_translate("MainWindow", "Удалить"))
+
 
 
 
