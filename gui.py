@@ -84,11 +84,11 @@ class Ui_MainWindow(object):
 
         self.organization = QtWidgets.QLabel(self.centralwidget)
         self.organization.setObjectName("organization")
-        self.gridLayout.addWidget(self.organization, 2, 2, 1, 1, QtCore.Qt.AlignRight)
+        self.gridLayout.addWidget(self.organization, 1, 2, 1, 1, QtCore.Qt.AlignRight)
 
         self.division = QtWidgets.QLabel(self.centralwidget)
         self.division.setObjectName("division")
-        self.gridLayout.addWidget(self.division, 1, 2, 1, 1, QtCore.Qt.AlignRight)
+        self.gridLayout.addWidget(self.division, 1, 1, 1, 1, QtCore.Qt.AlignRight)
 
 
         MainWindow.setCentralWidget(self.centralwidget)
