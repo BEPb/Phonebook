@@ -14,7 +14,7 @@ import gui  # подключаем свой модуль класс
 import sqlite3 as db
 import xlsxwriter
 import xlrd
-from PyQt5 import QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMessageBox, QFileDialog
 from PyQt5.QtCore import pyqtSlot, QObject, QThread, pyqtSignal
 from sys import argv
@@ -73,11 +73,10 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
         for i in range(self.table.rowCount()):  # перебираем все строки
             column = []
             for j in range(self.table.columnCount()):  # перебираем все колонки
-                # if j != 12:
-                #     column.append(self.table.model().data(self.table.model().index(i, j)))
-                # else:
-                #     column.append(self.table.cellWidget(i,j).currentText())
-                column.append(self.table.model().data(self.table.model().index(i, j)))
+                if j != 12:
+                    column.append(self.table.model().data(self.table.model().index(i, j)))
+                else:
+                    column.append(self.table.cellWidget(i,j).currentText())
             
             sql = """UPDATE Phones 
             SET organization = '%s',
@@ -131,10 +130,10 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
                 #     item.setCurrentIndex(self.all_messager_types.index(column))
                 #     normal_widget_item = False
                 #
-                # if i == 15:
-                #     flags = QtCore.Qt.ItemFlags()
-                #     flags != QtCore.Qt.ItemIsEnabled
-                #     item.setFlags(flags)
+                if i == 12:
+                    flags = QtCore.Qt.ItemFlags()
+                    flags != QtCore.Qt.ItemIsEnabled
+                    item.setFlags(flags)
                 
                 if normal_widget_item:
                     self.table.setItem(row_pos, i, item)
@@ -183,11 +182,11 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
 
             for i in range(self.table.columnCount()):
                 for j in range(self.table.rowCount()):
-                    # if i != 12:
-                    #     text = self.table.item(j, i).text()
-                    # else:
-                    #     text = self.table.cellWidget(j,i).currentText()
-                    text = self.table.cellWidget(j, i).currentText()
+                    if i != 12:
+                        text = self.table.item(j, i).text()
+                    else:
+                        text = self.table.cellWidget(j,i).currentText()
+                    # text = self.table.cellWidget(j, i).currentText()
                     worksheet.write(j + 1, i,text)
             workbook.close()
             self.info('Вывод успешно создан!')
@@ -205,7 +204,7 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
                     continue
                 row_data = []
                 for j,col in enumerate(range(sheet.ncols)):
-                    if j == 15:
+                    if j == 12:
                         continue
                     row_data.append(sheet.cell_value(row, col))
                 try:
@@ -283,12 +282,12 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
                     #     item.addItems(self.all_messager_types)
                     #     item.setCurrentIndex(self.all_messager_types.index(column))
                     #     normal_widget_item = False
-                    #
-                    # if i == 15:
-                    #     flags = QtCore.Qt.ItemFlags()
-                    #     flags != QtCore.Qt.ItemIsEnabled
-                    #     item.setFlags(flags)
-                    #
+
+                    if i == 12:
+                        flags = QtCore.Qt.ItemFlags()
+                        flags != QtCore.Qt.ItemIsEnabled
+                        item.setFlags(flags)
+
                     if normal_widget_item:
                         self.table.setItem(row_pos, i, item)
                     else:
