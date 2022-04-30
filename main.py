@@ -14,7 +14,7 @@ import gui  # подключаем свой модуль класс
 import sqlite3 as db
 import xlsxwriter
 import xlrd
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QMessageBox, QFileDialog
 from PyQt5.QtCore import pyqtSlot, QObject, QThread, pyqtSignal
 from sys import argv
@@ -32,6 +32,7 @@ class load_worker(QObject):
         database_data = LoadData(self.sql)
         self.finished.emit()
 
+
 class delete_worker(QObject):
     finished = pyqtSignal()
     def __init__(self, target):
@@ -47,12 +48,16 @@ class delete_worker(QObject):
                 self.target.table.model().data(self.target.table.model().index(row, 7)),
                 self.target.table.model().data(self.target.table.model().index(row, 8))
             )
+
+            print(self.target.table.model().data(self.target.table.model().index(row, 6)))
+            print(self.target.table.model().data(self.target.table.model().index(row, 7)))
+            print(self.target.table.model().data(self.target.table.model().index(row, 8)))
             cur = con.cursor()
             cur.execute(sql)
         con.commit()
 
-        self.target.clear_table()
-        self.target.load_table('SELECT * FROM Phones')
+        self.target.clear_table()  # очистка таблицы
+        self.target.load_table('SELECT * FROM Phones')  # чтение таблицы
 
 # класс создания графического приложения
 class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библиотека виджета и подключенный собств. модуль
@@ -62,16 +67,17 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
         self.load_table('SELECT * FROM phones')
         self.showMaximized()
 
-
+    # функция сохранения данных
     def save(self):
         cur = con.cursor()
         for i in range(self.table.rowCount()):  # перебираем все строки
             column = []
             for j in range(self.table.columnCount()):  # перебираем все колонки
-                if j != 12:
-                    column.append(self.table.model().data(self.table.model().index(i, j)))
-                else:
-                    column.append(self.table.cellWidget(i,j).currentText())
+                # if j != 12:
+                #     column.append(self.table.model().data(self.table.model().index(i, j)))
+                # else:
+                #     column.append(self.table.cellWidget(i,j).currentText())
+                column.append(self.table.model().data(self.table.model().index(i, j)))
             
             sql = """UPDATE Phones 
             SET organization = '%s',
@@ -94,11 +100,11 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
     def clear_table(self):
         self.table.setRowCount(0)
 
+    # функция чтения данных
     def load_table(self, sql):
         global database_data
         database_data = None
-        
-        self.thread = QThread()
+        self.thread = QThread(self)
         self.worker = load_worker(sql)
         self.worker.moveToThread(self.thread)
         self.thread.started.connect(self.worker.run)
@@ -106,7 +112,6 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
         self.worker.finished.connect(self.worker.deleteLater)
         self.thread.finished.connect(self.thread.deleteLater)
         self.thread.start()
-
         self.thread.finished.connect(self.load_table_thread_callback)
 
     def load_table_thread_callback(self):
@@ -354,9 +359,9 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
             self.error("Пожалуйста, выберите пользователя для удаления")
             return False
         
-        if self.question("Удалить пользователя", "Уверены ли вы?"):
+        if self.question("Удалить пользователя", "Уверены ли вы?"):  # окно подтверждения удаления строки пользователя
 
-            self.del_thread = QThread()
+            self.del_thread = QThread(self)
             self.worker = delete_worker(self)
             self.worker.moveToThread(self.del_thread)
             self.del_thread.started.connect(self.worker.run)
