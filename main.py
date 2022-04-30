@@ -42,11 +42,10 @@ class delete_worker(QObject):
         con = db.connect('.phones.sqlite3')
         for index in sorted(self.target.table.selectionModel().selectedRows()):
             row = index.row()
-            sql = "DELETE FROM Phones WHERE name LIKE '%{0}%' AND family LIKE '%{1}%' AND phone1 LIKE '%{2}%' AND id = '{3}'".format(
-                self.target.table.model().data(self.target.table.model().index(row, 0)),
-                self.target.table.model().data(self.target.table.model().index(row, 1)),
-                self.target.table.model().data(self.target.table.model().index(row, 2)),
-                self.target.table.model().data(self.target.table.model().index(row, 3))
+            sql = "DELETE FROM Phones WHERE name LIKE '%{0}%' AND middle_name LIKE '%{1}%' AND family_name LIKE '%{2}%'".format(
+                self.target.table.model().data(self.target.table.model().index(row, 6)),
+                self.target.table.model().data(self.target.table.model().index(row, 7)),
+                self.target.table.model().data(self.target.table.model().index(row, 8))
             )
             cur = con.cursor()
             cur.execute(sql)
@@ -179,10 +178,11 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
 
             for i in range(self.table.columnCount()):
                 for j in range(self.table.rowCount()):
-                    if i != 12:
-                        text = self.table.item(j, i).text()
-                    else:
-                        text = self.table.cellWidget(j,i).currentText()
+                    # if i != 12:
+                    #     text = self.table.item(j, i).text()
+                    # else:
+                    #     text = self.table.cellWidget(j,i).currentText()
+                    text = self.table.cellWidget(j, i).currentText()
                     worksheet.write(j + 1, i,text)
             workbook.close()
             self.info('Вывод успешно создан!')
@@ -246,7 +246,7 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
         self.city_phone.setText("")
         self.mark.setText("")
 
-    
+    # функция добавления данных в таблицу
     @pyqtSlot()
     def add_button(self):
         datas = {
@@ -294,23 +294,24 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
                 self.error('Необходимая информация доступна в базе данных')
         else:
             self.error('Пожалуйста, заполните имя и фамилию')
-    
+
+    # функция поиска в каждой ячейке
     @pyqtSlot()
     def search_button(self):
         datas = {
-            'organization' : self.name.text(),
-            'division' : self.family.text(),
-            'subdivision' : self.phone1.text(),
-            'subdivision_level1' : self.phone2.text(),
-            'subdivision_level2' : self.phone3.text(),
-            'position' : self.home1.text(),
-            'name' : self.home2.text(),
-            'family_name' : self.work_number.text(),
-            'middle_name' : self.home_path.text(),
-            'work_number' : self.fax.text(),
-            'mobile_phone' : self.website.text(),
-            'city_phone' : self.email.text(),
-            'mark' : self.messager.currentText()
+            'organization' : self.organization.text(),
+            'division' : self.division.text(),
+            'subdivision' : self.subdivision.text(),
+            'subdivision_level1' : self.subdivision_level1.text(),
+            'subdivision_level2' : self.subdivision_level2.text(),
+            'position' : self.position.text(),
+            'name' : self.name.text(),
+            'family_name' : self.family_name.text(),
+            'middle_name' : self.middle_name.text(),
+            'work_number' : self.work_number.text(),
+            'mobile_phone' : self.mobile_phone.text(),
+            'city_phone' : self.city_phone.text(),
+            'mark' : self.mark.text()
             }
         sql = """
         SELECT * FROM Phones WHERE 
@@ -345,10 +346,11 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):  # на входе библ
         self.clear_table()
         if self.load_table(sql) == False:
             self.error("Ошибка чтения")
-    
+
+    # функция удаления строки данных
     @pyqtSlot()
     def delete_button(self):
-        if self.table.selectionModel().selectedRows() == []:
+        if self.table.selectionModel().selectedRows() == []:  # если строка данных не выбрана
             self.error("Пожалуйста, выберите пользователя для удаления")
             return False
         
