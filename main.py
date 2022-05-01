@@ -48,10 +48,9 @@ class delete_worker(QObject):
                 self.target.table.model().data(self.target.table.model().index(row, 7)),
                 self.target.table.model().data(self.target.table.model().index(row, 8))
             )
-
-            print(self.target.table.model().data(self.target.table.model().index(row, 6)))
-            print(self.target.table.model().data(self.target.table.model().index(row, 7)))
-            print(self.target.table.model().data(self.target.table.model().index(row, 8)))
+            # print(self.target.table.model().data(self.target.table.model().index(row, 6)))
+            # print(self.target.table.model().data(self.target.table.model().index(row, 7)))
+            # print(self.target.table.model().data(self.target.table.model().index(row, 8)))
             cur = con.cursor()
             cur.execute(sql)
         con.commit()
