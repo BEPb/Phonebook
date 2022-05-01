@@ -1,6 +1,6 @@
 # Phonebook
 
-<b> Your own Phonebook written in python.</b>
+<b> Ваша собственный телефонный справочник написанный на питоне.</b>
 <p>
   <img  src="https://img.shields.io/github/stars/BEPb/Phonebook" />
   <img src="https://img.shields.io/github/contributors/BEPb/Phonebook" />
@@ -15,33 +15,34 @@
 </p>
 
 
-Read in other languages: [Russian](README.ru.md), [हिन्दी](README.hindi.md), [中國人](README.chinese.md)
+
+Читать на других языках: [English](README.md), [हिन्दी](README.hindi.md), [中國人](README.chinese.md)
 
 
 
-![GUI](images/phone.gif)
+![GUI](images/Notepad.gif)
 
 
-
-## How to install and run
+## Порядок установки и запуска                    
 ____
-### Clone the repository
+### Клонируем репозиторий (Clone the repository)
  
 ```sh
 $ cmd
-$ git clone https://github.com/BEPb/Phonebook
-$ cd Phonebook
+$ git clone https://github.com/BEPb/Browser
+$ cd Browser
 ```
  
-### Install the necessary packages (Install dependencies)
+### Устанавливаем необходимые пакеты (Install dependencies)
 ```sh
-$  pip install -r requirements.txt
+$    pip install -r requirements.txt
+
 ```
 
-## Usage
-To launch the GUI:
+## Использование
+Чтобы запустить графический интерфейс:
 ```
-python3 -m main
+python main.py
 ```
 
 

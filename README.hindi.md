@@ -15,31 +15,32 @@
 </p>
 
 
-Read in other languages: [Russian](README.ru.md), [हिन्दी](README.hindi.md), [中國人](README.chinese.md)
+
+Read in other languages: [English](README.md), [Russian](README.ru.md), [中國人](README.chinese.md)
 
 
 
-![GUI](images/phone.gif)
+![GUI](images/Notepad.gif)
 
 
-
-## How to install and run
+## कैसे स्थापित करें और चलाएं
 ____
-### Clone the repository
+### रिपॉजिटरी को क्लोन करें
  
 ```sh
 $ cmd
-$ git clone https://github.com/BEPb/Phonebook
-$ cd Phonebook
+$ git clone https://github.com/BEPb/Browser
+$ cd Browser
 ```
  
-### Install the necessary packages (Install dependencies)
+### आवश्यक पैकेज स्थापित करें (निर्भरता स्थापित करें)
 ```sh
-$  pip install -r requirements.txt
+$ pip install -r requirements.txt
+
 ```
 
-## Usage
-To launch the GUI:
+## उपयोग
+要啟動 GUI：
 ```
 python3 -m main
 ```
