@@ -20,7 +20,7 @@
 
 
 
-![GUI](images/Notepad.gif)
+![GUI](images/phone.gif)
 
 
 ## Порядок установки и запуска                    
