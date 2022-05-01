@@ -44,5 +44,16 @@ $ pip install -r requirements.txt
 python3 -m main
 ```
 
+## 項目發展
+歡迎提出項目開發請求。 對於重大更改，請先打開一個問題，以便
+討論你想改變什麼。
+____
+
+## 執照
+
+
+[MIT](LICENSE.txt)
+
+____
 
 
