@@ -1,6 +1,6 @@
 # Phonebook
 
-<b> Your own Phonebook written in python.</b>
+<b> 用Python实现的个人电话簿.</b>
 <p>
   <img  src="https://img.shields.io/github/stars/BEPb/Phonebook" />
   <img src="https://img.shields.io/github/contributors/BEPb/Phonebook" />
@@ -16,16 +16,16 @@
 
 
 
-Read in other languages: [English](README.md), [हिन्दी](README.hindi.md), [Russian](README.ru.md)
+其他语言: [English](README.md), [हिन्दी](README.hindi.md), [Russian](README.ru.md)
 
 
 
-![GUI](images/phone.gif)
+![程序界面](images/phone.gif)
 
 
-##如何安裝和運行
+## 安装和运行
 ____
-### 克隆存儲庫
+### 克隆储存库
  
 ```sh
 $ cmd
@@ -33,23 +33,22 @@ $ git clone https://github.com/BEPb/Browser
 $ cd Browser
 ```
  
-### 安裝必要的包（安裝依賴）
+### 安装依赖项
 ```sh
 $ pip install -r requirements.txt
 ```
 
-＃＃ 用法
-要啟動 GUI：
+## 用法
+启动程序界面：
 ```
 python3 -m main
 ```
 
-## 項目發展
-歡迎提出項目開發請求。 對於重大更改，請先打開一個問題，以便
-討論你想改變什麼。
+## 项目发展
+欢迎提出对项目开发的一些提议。对于又较大更改的内容，请先提出issue进行讨论。
 ____
 
-## 執照
+## 开源许可
 
 
 [MIT](LICENSE.txt)
