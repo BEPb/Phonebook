@@ -15,7 +15,7 @@
 </p>
 
 
-Read in other languages: [Russian](README.ru.md), [हिन्दी](README.hindi.md), [中國人](README.chinese.md)
+Read in other languages: [Russian](README.ru.md), [हिन्दी](README.hindi.md), [简体中文](README.chinese.md)
 
 
 

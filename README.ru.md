@@ -16,7 +16,7 @@
 
 
 
-Читать на других языках: [English](README.md), [हिन्दी](README.hindi.md), [中國人](README.chinese.md)
+Читать на других языках: [English](README.md), [हिन्दी](README.hindi.md), [简体中文](README.chinese.md)
 
 
 
